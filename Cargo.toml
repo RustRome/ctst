@@ -1,0 +1,12 @@
+[package]
+name = "ctst"
+version = "0.1.0"
+authors = ["Tglman <tglman@tglman.com>"]
+
+[dependencies]
+quicli = "0.2.0"
+noise_search = "0.7.0"
+
+
+
+
