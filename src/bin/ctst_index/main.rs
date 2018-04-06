@@ -11,7 +11,7 @@ use std::io::{BufRead,BufReader};
 struct Cli {
     #[structopt(long = "source", short = "s")]
     source:String,
-    #[structopt(long = "index", short = "s")]
+    #[structopt(long = "index", short = "i")]
     index:String,
 }
 
@@ -28,11 +28,16 @@ fn parse(source:&str) -> Result<Vec<(String,String)>> {
         } else if trimmed.len() == 0 {
             if let Some(ref desc) = description {
                 if  let Some(ref comm) = command {
-                vec.push((comm.clone(),desc.clone()));
-            }
+                    vec.push((comm.clone(),desc.clone()));
+                }
             }
         } else  {
             command = Some(trimmed);
+        }
+    }
+    if let Some(ref desc) = description {
+        if  let Some(ref comm) = command {
+            vec.push((comm.clone(),desc.clone()));
         }
     }
 
